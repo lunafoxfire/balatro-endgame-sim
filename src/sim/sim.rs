@@ -32,20 +32,18 @@ pub struct Simulation {
     base_hand: BaseHand,
     hand: Vec<Card>,
     jokers: Vec<Joker>,
-    steel_card_triggers: u32,
-    unplayed_card_triggers: u32, // kings for Baron
+    unplayed_cards: Vec<UnplayedCard>,
     score: Score,
     retriggers: Retriggers,
 }
 
 impl Simulation {
-    pub fn init(base_hand: BaseHand, hand: Vec<Card>, jokers: Vec<Joker>, steel_card_triggers: u32, unplayed_card_triggers: u32) -> Self {
+    pub fn init(base_hand: BaseHand, hand: Vec<Card>, jokers: Vec<Joker>, unplayed_cards: Vec<UnplayedCard>) -> Self {
         Self {
             base_hand,
             hand,
             jokers,
-            steel_card_triggers,
-            unplayed_card_triggers,
+            unplayed_cards,
             score: Score::default(),
             retriggers: Retriggers::default(),
         }
@@ -78,23 +76,21 @@ impl Simulation {
             }
         };
 
-        for _ in 0..self.unplayed_card_triggers {
+        for card in self.unplayed_cards.iter() {
             let mut triggers = 1;
             triggers += self.retriggers.hand;
+            if card.has_red_seal {
+                triggers += 1;
+            }
             for _ in 0..triggers {
+                if card.is_steel {
+                    self.score.mult *= 1.5;
+                }
                 for joker in self.jokers.iter() {
-                    joker.on_unplayed_trigger(&mut self.score);
+                    joker.on_unplayed_trigger(&mut self.score, &card);
                 }
             }
         }
-
-        for _ in 0..self.steel_card_triggers {
-            let mut triggers = 1;
-            triggers += self.retriggers.hand;
-            for _ in 0..triggers {
-                self.score.mult *= 1.5;
-            }
-        };
 
         for joker in self.jokers.iter() {
             joker.on_trigger(&mut self.score);

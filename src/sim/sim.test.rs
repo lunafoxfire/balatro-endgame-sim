@@ -8,9 +8,8 @@ fn base_hand_score() {
             Card::new(10),
         ];
         let jokers = vec![];
-        let steel_card_triggers = 0;
-        let unplayed_card_triggers = 0;
-        let mut sim = Simulation::init(base_hand, hand, jokers, steel_card_triggers, unplayed_card_triggers);
+        let unplayed_cards = vec![];
+        let mut sim = Simulation::init(base_hand, hand, jokers, unplayed_cards);
         assert_eq!(sim.run(), 15.0);
     }
     {
@@ -23,9 +22,8 @@ fn base_hand_score() {
             Card::new(10),
         ];
         let jokers = vec![];
-        let steel_card_triggers = 0;
-        let unplayed_card_triggers = 0;
-        let mut sim = Simulation::init(base_hand, hand, jokers, steel_card_triggers, unplayed_card_triggers);
+        let unplayed_cards = vec![];
+        let mut sim = Simulation::init(base_hand, hand, jokers, unplayed_cards);
         assert_eq!(sim.run(), 28380.0);
     }
 }
@@ -42,9 +40,8 @@ fn bonus_cards() {
             Card::new(10),
         ];
         let jokers = vec![];
-        let steel_card_triggers = 0;
-        let unplayed_card_triggers = 0;
-        let mut sim = Simulation::init(base_hand, hand, jokers, steel_card_triggers, unplayed_card_triggers);
+        let unplayed_cards = vec![];
+        let mut sim = Simulation::init(base_hand, hand, jokers, unplayed_cards);
         assert_eq!(sim.run(), 32250.0);
     }
 }
@@ -61,9 +58,8 @@ fn mult_cards() {
             Card::new(10),
         ];
         let jokers = vec![];
-        let steel_card_triggers = 0;
-        let unplayed_card_triggers = 0;
-        let mut sim = Simulation::init(base_hand, hand, jokers, steel_card_triggers, unplayed_card_triggers);
+        let unplayed_cards = vec![];
+        let mut sim = Simulation::init(base_hand, hand, jokers, unplayed_cards);
         assert_eq!(sim.run(), 36300.0);
     }
 }
@@ -80,9 +76,8 @@ fn glass_cards() {
             Card::new(10),
         ];
         let jokers = vec![];
-        let steel_card_triggers = 0;
-        let unplayed_card_triggers = 0;
-        let mut sim = Simulation::init(base_hand, hand, jokers, steel_card_triggers, unplayed_card_triggers);
+        let unplayed_cards = vec![];
+        let mut sim = Simulation::init(base_hand, hand, jokers, unplayed_cards);
         assert_eq!(sim.run(), 56760.0);
     }
     {
@@ -95,9 +90,8 @@ fn glass_cards() {
             Card::new(10),
         ];
         let jokers = vec![];
-        let steel_card_triggers = 0;
-        let unplayed_card_triggers = 0;
-        let mut sim = Simulation::init(base_hand, hand, jokers, steel_card_triggers, unplayed_card_triggers);
+        let unplayed_cards = vec![];
+        let mut sim = Simulation::init(base_hand, hand, jokers, unplayed_cards);
         assert_eq!(sim.run(), 113520.0);
     }
 }
@@ -114,9 +108,8 @@ fn foil_cards() {
             Card::new(10),
         ];
         let jokers = vec![];
-        let steel_card_triggers = 0;
-        let unplayed_card_triggers = 0;
-        let mut sim = Simulation::init(base_hand, hand, jokers, steel_card_triggers, unplayed_card_triggers);
+        let unplayed_cards = vec![];
+        let mut sim = Simulation::init(base_hand, hand, jokers, unplayed_cards);
         assert_eq!(sim.run(), 34830.0);
     }
 }
@@ -133,9 +126,8 @@ fn holographic_cards() {
             Card::new(10),
         ];
         let jokers = vec![];
-        let steel_card_triggers = 0;
-        let unplayed_card_triggers = 0;
-        let mut sim = Simulation::init(base_hand, hand, jokers, steel_card_triggers, unplayed_card_triggers);
+        let unplayed_cards = vec![];
+        let mut sim = Simulation::init(base_hand, hand, jokers, unplayed_cards);
         assert_eq!(sim.run(), 48180.0);
     }
 }
@@ -152,9 +144,8 @@ fn polychrome_cards() {
             Card::new(10),
         ];
         let jokers = vec![];
-        let steel_card_triggers = 0;
-        let unplayed_card_triggers = 0;
-        let mut sim = Simulation::init(base_hand, hand, jokers, steel_card_triggers, unplayed_card_triggers);
+        let unplayed_cards = vec![];
+        let mut sim = Simulation::init(base_hand, hand, jokers, unplayed_cards);
         assert_eq!(sim.run(), 42570.0);
     }
     {
@@ -167,9 +158,8 @@ fn polychrome_cards() {
             Card::new(10),
         ];
         let jokers = vec![];
-        let steel_card_triggers = 0;
-        let unplayed_card_triggers = 0;
-        let mut sim = Simulation::init(base_hand, hand, jokers, steel_card_triggers, unplayed_card_triggers);
+        let unplayed_cards = vec![];
+        let mut sim = Simulation::init(base_hand, hand, jokers, unplayed_cards);
         assert_eq!(sim.run(), 63855.0);
     }
 }
@@ -186,9 +176,8 @@ fn hand_order_of_operations() {
             Card::new(10),
         ];
         let jokers = vec![];
-        let steel_card_triggers = 0;
-        let unplayed_card_triggers = 0;
-        let mut sim = Simulation::init(base_hand, hand, jokers, steel_card_triggers, unplayed_card_triggers);
+        let unplayed_cards = vec![];
+        let mut sim = Simulation::init(base_hand, hand, jokers, unplayed_cards);
         assert_eq!(sim.run(), 62040.0);
     }
     {
@@ -201,9 +190,8 @@ fn hand_order_of_operations() {
             Card::new(10),
         ];
         let jokers = vec![];
-        let steel_card_triggers = 0;
-        let unplayed_card_triggers = 0;
-        let mut sim = Simulation::init(base_hand, hand, jokers, steel_card_triggers, unplayed_card_triggers);
+        let unplayed_cards = vec![];
+        let mut sim = Simulation::init(base_hand, hand, jokers, unplayed_cards);
         assert_eq!(sim.run(), 59400.0);
     }
     {
@@ -216,9 +204,8 @@ fn hand_order_of_operations() {
             Card::new(10),
         ];
         let jokers = vec![];
-        let steel_card_triggers = 0;
-        let unplayed_card_triggers = 0;
-        let mut sim = Simulation::init(base_hand, hand, jokers, steel_card_triggers, unplayed_card_triggers);
+        let unplayed_cards = vec![];
+        let mut sim = Simulation::init(base_hand, hand, jokers, unplayed_cards);
         assert_eq!(sim.run(), 52470.0);
     }
     {
@@ -231,9 +218,8 @@ fn hand_order_of_operations() {
             Card::new(10),
         ];
         let jokers = vec![];
-        let steel_card_triggers = 0;
-        let unplayed_card_triggers = 0;
-        let mut sim = Simulation::init(base_hand, hand, jokers, steel_card_triggers, unplayed_card_triggers);
+        let unplayed_cards = vec![];
+        let mut sim = Simulation::init(base_hand, hand, jokers, unplayed_cards);
         assert_eq!(sim.run(), 49170.0);
     }
 }
@@ -250,9 +236,8 @@ fn card_order_of_operations() {
             Card::new(10),
         ];
         let jokers = vec![];
-        let steel_card_triggers = 0;
-        let unplayed_card_triggers = 0;
-        let mut sim = Simulation::init(base_hand, hand, jokers, steel_card_triggers, unplayed_card_triggers);
+        let unplayed_cards = vec![];
+        let mut sim = Simulation::init(base_hand, hand, jokers, unplayed_cards);
         assert_eq!(sim.run(), 69960.0);
     }
     {
@@ -265,9 +250,8 @@ fn card_order_of_operations() {
             Card::new(10),
         ];
         let jokers = vec![];
-        let steel_card_triggers = 0;
-        let unplayed_card_triggers = 0;
-        let mut sim = Simulation::init(base_hand, hand, jokers, steel_card_triggers, unplayed_card_triggers);
+        let unplayed_cards = vec![];
+        let mut sim = Simulation::init(base_hand, hand, jokers, unplayed_cards);
         assert_eq!(sim.run(), 46530.0);
     }
 }
@@ -284,9 +268,8 @@ fn red_seal() {
             Card::new(10),
         ];
         let jokers = vec![];
-        let steel_card_triggers = 0;
-        let unplayed_card_triggers = 0;
-        let mut sim = Simulation::init(base_hand, hand, jokers, steel_card_triggers, unplayed_card_triggers);
+        let unplayed_cards = vec![];
+        let mut sim = Simulation::init(base_hand, hand, jokers, unplayed_cards);
         assert_eq!(sim.run(), 28810.0);
     }
     {
@@ -299,9 +282,8 @@ fn red_seal() {
             Card::new(10).add_enhancement(Enhancement::Glass).add_seal(Seal::Red),
         ];
         let jokers = vec![];
-        let steel_card_triggers = 0;
-        let unplayed_card_triggers = 0;
-        let mut sim = Simulation::init(base_hand, hand, jokers, steel_card_triggers, unplayed_card_triggers);
+        let unplayed_cards = vec![];
+        let mut sim = Simulation::init(base_hand, hand, jokers, unplayed_cards);
         assert_eq!(sim.run(), 7259040.0);
     }
 }
@@ -318,9 +300,10 @@ fn steel_cards() {
             Card::new(10),
         ];
         let jokers = vec![];
-        let steel_card_triggers = 1;
-        let unplayed_card_triggers = 0;
-        let mut sim = Simulation::init(base_hand, hand, jokers, steel_card_triggers, unplayed_card_triggers);
+        let unplayed_cards = vec![
+            UnplayedCard::steel(),
+        ];
+        let mut sim = Simulation::init(base_hand, hand, jokers, unplayed_cards);
         assert_eq!(sim.run(), 42570.0);
     }
     {
@@ -333,9 +316,13 @@ fn steel_cards() {
             Card::new(10),
         ];
         let jokers = vec![];
-        let steel_card_triggers = 4;
-        let unplayed_card_triggers = 0;
-        let mut sim = Simulation::init(base_hand, hand, jokers, steel_card_triggers, unplayed_card_triggers);
+        let unplayed_cards = vec![
+            UnplayedCard::steel(),
+            UnplayedCard::steel_king(),
+            UnplayedCard::king(),
+            UnplayedCard::steel().add_seal(),
+        ];
+        let mut sim = Simulation::init(base_hand, hand, jokers, unplayed_cards);
         assert_eq!(sim.run(), 143673.75);
     }
 }
@@ -354,9 +341,8 @@ fn generic_joker() {
         let jokers = vec![
             Joker::new(JokerClass::Generic(Modifiers::chips(50)))
         ];
-        let steel_card_triggers = 0;
-        let unplayed_card_triggers = 0;
-        let mut sim = Simulation::init(base_hand, hand, jokers, steel_card_triggers, unplayed_card_triggers);
+        let unplayed_cards = vec![];
+        let mut sim = Simulation::init(base_hand, hand, jokers, unplayed_cards);
         assert_eq!(sim.run(), 30530.0);
     }
     {
@@ -371,9 +357,8 @@ fn generic_joker() {
         let jokers = vec![
             Joker::new(JokerClass::Generic(Modifiers::mult(50)))
         ];
-        let steel_card_triggers = 0;
-        let unplayed_card_triggers = 0;
-        let mut sim = Simulation::init(base_hand, hand, jokers, steel_card_triggers, unplayed_card_triggers);
+        let unplayed_cards = vec![];
+        let mut sim = Simulation::init(base_hand, hand, jokers, unplayed_cards);
         assert_eq!(sim.run(), 61380.0);
     }
     {
@@ -388,9 +373,8 @@ fn generic_joker() {
         let jokers = vec![
             Joker::new(JokerClass::Generic(Modifiers::x_mult(4.0)))
         ];
-        let steel_card_triggers = 0;
-        let unplayed_card_triggers = 0;
-        let mut sim = Simulation::init(base_hand, hand, jokers, steel_card_triggers, unplayed_card_triggers);
+        let unplayed_cards = vec![];
+        let mut sim = Simulation::init(base_hand, hand, jokers, unplayed_cards);
         assert_eq!(sim.run(), 113520.0);
     }
 }
@@ -409,9 +393,8 @@ fn foil_joker() {
         let jokers = vec![
             Joker::new(JokerClass::Generic(Modifiers::mult(50))).add_edition(Edition::Foil)
         ];
-        let steel_card_triggers = 0;
-        let unplayed_card_triggers = 0;
-        let mut sim = Simulation::init(base_hand, hand, jokers, steel_card_triggers, unplayed_card_triggers);
+        let unplayed_cards = vec![];
+        let mut sim = Simulation::init(base_hand, hand, jokers, unplayed_cards);
         assert_eq!(sim.run(), 66030.0);
     }
     {
@@ -426,9 +409,8 @@ fn foil_joker() {
         let jokers = vec![
             Joker::new(JokerClass::Generic(Modifiers::x_mult(4.0))).add_edition(Edition::Foil)
         ];
-        let steel_card_triggers = 0;
-        let unplayed_card_triggers = 0;
-        let mut sim = Simulation::init(base_hand, hand, jokers, steel_card_triggers, unplayed_card_triggers);
+        let unplayed_cards = vec![];
+        let mut sim = Simulation::init(base_hand, hand, jokers, unplayed_cards);
         assert_eq!(sim.run(), 122120.0);
     }
 }
@@ -447,9 +429,8 @@ fn holographic_joker() {
         let jokers = vec![
             Joker::new(JokerClass::Generic(Modifiers::mult(50))).add_edition(Edition::Holo)
         ];
-        let steel_card_triggers = 0;
-        let unplayed_card_triggers = 0;
-        let mut sim = Simulation::init(base_hand, hand, jokers, steel_card_triggers, unplayed_card_triggers);
+        let unplayed_cards = vec![];
+        let mut sim = Simulation::init(base_hand, hand, jokers, unplayed_cards);
         assert_eq!(sim.run(), 67980.0);
     }
     {
@@ -464,9 +445,8 @@ fn holographic_joker() {
         let jokers = vec![
             Joker::new(JokerClass::Generic(Modifiers::x_mult(4.0))).add_edition(Edition::Holo)
         ];
-        let steel_card_triggers = 0;
-        let unplayed_card_triggers = 0;
-        let mut sim = Simulation::init(base_hand, hand, jokers, steel_card_triggers, unplayed_card_triggers);
+        let unplayed_cards = vec![];
+        let mut sim = Simulation::init(base_hand, hand, jokers, unplayed_cards);
         assert_eq!(sim.run(), 139920.0);
     }
 }
@@ -485,9 +465,8 @@ fn polychrome_joker() {
         let jokers = vec![
             Joker::new(JokerClass::Generic(Modifiers::mult(50))).add_edition(Edition::Poly)
         ];
-        let steel_card_triggers = 0;
-        let unplayed_card_triggers = 0;
-        let mut sim = Simulation::init(base_hand, hand, jokers, steel_card_triggers, unplayed_card_triggers);
+        let unplayed_cards = vec![];
+        let mut sim = Simulation::init(base_hand, hand, jokers, unplayed_cards);
         assert_eq!(sim.run(), 92070.0);
     }
     {
@@ -502,9 +481,8 @@ fn polychrome_joker() {
         let jokers = vec![
             Joker::new(JokerClass::Generic(Modifiers::x_mult(4.0))).add_edition(Edition::Poly)
         ];
-        let steel_card_triggers = 0;
-        let unplayed_card_triggers = 0;
-        let mut sim = Simulation::init(base_hand, hand, jokers, steel_card_triggers, unplayed_card_triggers);
+        let unplayed_cards = vec![];
+        let mut sim = Simulation::init(base_hand, hand, jokers, unplayed_cards);
         assert_eq!(sim.run(), 170280.0);
     }
 }
@@ -523,9 +501,8 @@ fn generic_per_trigger_joker() {
         let jokers = vec![
             Joker::new(JokerClass::GenericPerTrigger(Modifiers::chips(50)))
         ];
-        let steel_card_triggers = 0;
-        let unplayed_card_triggers = 0;
-        let mut sim = Simulation::init(base_hand, hand, jokers, steel_card_triggers, unplayed_card_triggers);
+        let unplayed_cards = vec![];
+        let mut sim = Simulation::init(base_hand, hand, jokers, unplayed_cards);
         assert_eq!(sim.run(), 39130.0);
     }
     {
@@ -540,9 +517,8 @@ fn generic_per_trigger_joker() {
         let jokers = vec![
             Joker::new(JokerClass::GenericPerTrigger(Modifiers::mult(50)))
         ];
-        let steel_card_triggers = 0;
-        let unplayed_card_triggers = 0;
-        let mut sim = Simulation::init(base_hand, hand, jokers, steel_card_triggers, unplayed_card_triggers);
+        let unplayed_cards = vec![];
+        let mut sim = Simulation::init(base_hand, hand, jokers, unplayed_cards);
         assert_eq!(sim.run(), 193380.0);
     }
     {
@@ -557,9 +533,8 @@ fn generic_per_trigger_joker() {
         let jokers = vec![
             Joker::new(JokerClass::GenericPerTrigger(Modifiers::x_mult(1.5)))
         ];
-        let steel_card_triggers = 0;
-        let unplayed_card_triggers = 0;
-        let mut sim = Simulation::init(base_hand, hand, jokers, steel_card_triggers, unplayed_card_triggers);
+        let unplayed_cards = vec![];
+        let mut sim = Simulation::init(base_hand, hand, jokers, unplayed_cards);
         assert_eq!(sim.run(), 215510.625);
     }
 }
@@ -578,9 +553,8 @@ fn retrigger_joker() {
         let jokers = vec![
             Joker::new(JokerClass::RetriggerAll)
         ];
-        let steel_card_triggers = 0;
-        let unplayed_card_triggers = 0;
-        let mut sim = Simulation::init(base_hand, hand, jokers, steel_card_triggers, unplayed_card_triggers);
+        let unplayed_cards = vec![];
+        let mut sim = Simulation::init(base_hand, hand, jokers, unplayed_cards);
         assert_eq!(sim.run(), 36210.0);
     }
 }
@@ -599,9 +573,8 @@ fn hanging_chad_joker() {
         let jokers = vec![
             Joker::new(JokerClass::HangingChad)
         ];
-        let steel_card_triggers = 0;
-        let unplayed_card_triggers = 0;
-        let mut sim = Simulation::init(base_hand, hand, jokers, steel_card_triggers, unplayed_card_triggers);
+        let unplayed_cards = vec![];
+        let mut sim = Simulation::init(base_hand, hand, jokers, unplayed_cards);
         assert_eq!(sim.run(), 37400.0);
     }
 }
@@ -620,9 +593,8 @@ fn photograph_joker() {
         let jokers = vec![
             Joker::new(JokerClass::Photograph)
         ];
-        let steel_card_triggers = 0;
-        let unplayed_card_triggers = 0;
-        let mut sim = Simulation::init(base_hand, hand, jokers, steel_card_triggers, unplayed_card_triggers);
+        let unplayed_cards = vec![];
+        let mut sim = Simulation::init(base_hand, hand, jokers, unplayed_cards);
         assert_eq!(sim.run(), 62040.0);
     }
     {
@@ -638,9 +610,8 @@ fn photograph_joker() {
             Joker::new(JokerClass::Photograph),
             Joker::new(JokerClass::HangingChad),
         ];
-        let steel_card_triggers = 0;
-        let unplayed_card_triggers = 0;
-        let mut sim = Simulation::init(base_hand, hand, jokers, steel_card_triggers, unplayed_card_triggers);
+        let unplayed_cards = vec![];
+        let mut sim = Simulation::init(base_hand, hand, jokers, unplayed_cards);
         assert_eq!(sim.run(), 272000.0);
     }
 }
@@ -659,10 +630,13 @@ fn baron_joker() {
         let jokers = vec![
             Joker::new(JokerClass::Baron)
         ];
-        let steel_card_triggers = 0;
-        let unplayed_card_triggers = 3;
-        let mut sim = Simulation::init(base_hand, hand, jokers, steel_card_triggers, unplayed_card_triggers);
-        assert_eq!(sim.run(), 95782.5);
+        let unplayed_cards = vec![
+            UnplayedCard::king(),
+            UnplayedCard::king().add_seal(),
+            UnplayedCard::steel(),
+        ];
+        let mut sim = Simulation::init(base_hand, hand, jokers, unplayed_cards);
+        assert_eq!(sim.run(), 143673.75);
     } 
 }
 
@@ -680,9 +654,12 @@ fn mime_joker() {
         let jokers = vec![
             Joker::new(JokerClass::Mime)
         ];
-        let steel_card_triggers = 3;
-        let unplayed_card_triggers = 0;
-        let mut sim = Simulation::init(base_hand, hand, jokers, steel_card_triggers, unplayed_card_triggers);
+        let unplayed_cards = vec![
+            UnplayedCard::steel(),
+            UnplayedCard::steel(),
+            UnplayedCard::steel(),
+        ];
+        let mut sim = Simulation::init(base_hand, hand, jokers, unplayed_cards);
         assert_eq!(sim.run(), 323265.9375);
     } 
     {
@@ -698,9 +675,32 @@ fn mime_joker() {
             Joker::new(JokerClass::Baron),
             Joker::new(JokerClass::Mime),
         ];
-        let steel_card_triggers = 3;
-        let unplayed_card_triggers = 3;
-        let mut sim = Simulation::init(base_hand, hand, jokers, steel_card_triggers, unplayed_card_triggers);
+        let unplayed_cards = vec![
+            UnplayedCard::steel_king(),
+            UnplayedCard::steel_king(),
+            UnplayedCard::steel_king(),
+        ];
+        let mut sim = Simulation::init(base_hand, hand, jokers, unplayed_cards);
         assert_eq!(sim.run(), 3682201.0693359375);
+    } 
+    {
+        let base_hand = BaseHand::new(HandType::FlushFive, 10);
+        let hand = vec![
+            Card::new(10),
+            Card::new(10),
+            Card::new(10),
+            Card::new(10),
+            Card::new(10),
+        ];
+        let jokers = vec![
+            Joker::new(JokerClass::Baron),
+            Joker::new(JokerClass::Mime),
+        ];
+        let unplayed_cards = vec![
+            UnplayedCard::steel_king(),
+            UnplayedCard::steel_king().add_seal(),
+        ];
+        let mut sim = Simulation::init(base_hand, hand, jokers, unplayed_cards);
+        assert_eq!(sim.run(), 1636533.80859375);
     } 
 }

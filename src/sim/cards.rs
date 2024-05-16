@@ -1,3 +1,5 @@
+use std::default;
+
 use crate::sim::*;
 
 pub struct Card {
@@ -183,5 +185,41 @@ impl BaseHand {
             chips: progression.chips_base + (self.level - 1) * progression.chips_per_level,
             mult: progression.mult_base + (self.level - 1) * progression.mult_per_level,
         }
+    }
+}
+
+#[derive(Default)]
+pub struct UnplayedCard {
+    pub is_steel: bool,
+    pub is_king: bool,
+    pub has_red_seal: bool,
+}
+
+impl UnplayedCard {
+    pub fn steel() -> Self {
+        Self {
+            is_steel: true,
+            ..Default::default()
+        }
+    }
+
+    pub fn king() -> Self {
+        Self {
+            is_king: true,
+            ..Default::default()
+        }
+    }
+
+    pub fn steel_king() -> Self {
+        Self {
+            is_steel: true,
+            is_king: true,
+            ..Default::default()
+        }
+    }
+
+    pub fn add_seal(mut self) -> Self {
+        self.has_red_seal = true;
+        self
     }
 }

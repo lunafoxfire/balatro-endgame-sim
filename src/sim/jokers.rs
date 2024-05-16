@@ -62,9 +62,15 @@ impl Joker {
         score.apply(&modifiers);
     }
 
-    pub fn on_unplayed_trigger(&self, score: &mut Score) {
+    pub fn on_unplayed_trigger(&self, score: &mut Score, card: &UnplayedCard) {
         let modifiers = match self.class {
-            JokerClass::Baron => { Modifiers::x_mult(1.5) },
+            JokerClass::Baron => {
+                if card.is_king {
+                    Modifiers::x_mult(1.5)
+                } else {
+                    Modifiers::default()
+                }
+            },
             _ => { Modifiers::default() }
         };
         score.apply(&modifiers);

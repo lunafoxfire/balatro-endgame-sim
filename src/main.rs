@@ -27,10 +27,11 @@ fn main() {
         Joker::new(JokerClass::RetriggerAll),
         Joker::new(JokerClass::RetriggerAll),
     ];
-    let steel_cards_triggers = 0;
-    let unplayed_card_triggers = 0;
+    let unplayed_cards = vec![
 
-    let mut sim = Simulation::init(base_hand, hand, jokers, steel_cards_triggers, unplayed_card_triggers);
+    ];
+
+    let mut sim = Simulation::init(base_hand, hand, jokers, unplayed_cards);
     let score = sim.run();
 
     let score_truncated = score as u128;
