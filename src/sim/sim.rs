@@ -112,7 +112,7 @@ impl Display for Simulation {
         for joker in self.jokers.iter() {
             output += &format!("\n    {}", joker);
         }
-        output += &String::from("\nUnplayed:");
+        output += &format!("\nUnplayed ({}):", self.unplayed_cards.len());
         for card in self.unplayed_cards.iter() {
             output += &format!("\n    {}", card);
         }
