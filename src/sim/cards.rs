@@ -1,5 +1,5 @@
-use std::default;
-
+use std::fmt::Display;
+use strum::Display;
 use crate::sim::*;
 
 pub struct Card {
@@ -49,7 +49,23 @@ impl Card {
     }
 }
 
-#[derive(Clone, Copy, PartialEq, Eq)]
+impl Display for Card {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        let mut name = format!("{}", self.value);
+        if self.enhancement != Enhancement::None {
+            name += &format!(" | {}", self.enhancement.to_string());
+        }
+        if self.edition != Edition::None {
+            name += &format!(" | {}", self.edition.to_string());
+        }
+        if self.seal != Seal::None {
+            name += &format!(" | {}", self.seal.to_string());
+        }
+        write!(f, "{}", name)
+    }
+}
+
+#[derive(Clone, Copy, PartialEq, Eq, Display)]
 pub enum HandType {
     HighCard,
     Pair,
@@ -188,6 +204,12 @@ impl BaseHand {
     }
 }
 
+impl Display for BaseHand {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{} Lv. {}", self.hand_type, self.level)
+    }
+}
+
 #[derive(Default)]
 pub struct UnplayedCard {
     pub is_steel: bool,
@@ -221,5 +243,18 @@ impl UnplayedCard {
     pub fn add_seal(mut self) -> Self {
         self.has_red_seal = true;
         self
+    }
+}
+
+impl Display for UnplayedCard {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        let mut name = String::from(if self.is_king { "King" } else { "Any" });
+        if self.is_steel {
+            name += " | Steel";
+        }
+        if self.has_red_seal {
+            name += " | Red Seal";
+        }
+        write!(f, "{}", name)
     }
 }

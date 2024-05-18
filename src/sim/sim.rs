@@ -1,6 +1,7 @@
 #[cfg(test)]
 #[path ="sim.test.rs"]
 mod test;
+use std::fmt::Display;
 use crate::sim::*;
 
 #[derive(Default, Clone, Copy)]
@@ -33,8 +34,6 @@ pub struct Simulation {
     hand: Vec<Card>,
     jokers: Vec<Joker>,
     unplayed_cards: Vec<UnplayedCard>,
-    score: Score,
-    retriggers: Retriggers,
 }
 
 impl Simulation {
@@ -44,58 +43,79 @@ impl Simulation {
             hand,
             jokers,
             unplayed_cards,
-            score: Score::default(),
-            retriggers: Retriggers::default(),
         }
     }
 
-    pub fn run(&mut self) -> f64 {
+    pub fn run(&self) -> f64 {
+        let mut score = Score::default();
+        let mut retriggers = Retriggers::default();
+
         let base_score = self.base_hand.score();
-        self.score.chips = base_score.chips as f64;
-        self.score.mult = base_score.mult as f64;
+        score.chips = base_score.chips as f64;
+        score.mult = base_score.mult as f64;
 
         for joker in self.jokers.iter() {
-            joker.on_setup(&mut self.retriggers);
+            joker.on_setup(&mut retriggers);
         };
 
         for (i, card) in self.hand.iter().enumerate() {
             let mut triggers = 1;
-            triggers += self.retriggers.all;
+            triggers += retriggers.all;
             if i == 0 {
-                triggers += self.retriggers.first;
+                triggers += retriggers.first;
             }
             if *card.seal() == Seal::Red {
                 triggers += 1;
             }
 
             for _ in 0..triggers {
-                card.on_trigger(&mut self.score);
+                card.on_trigger(&mut score);
                 for joker in self.jokers.iter() {
-                    joker.on_card_trigger(&mut self.score, i);
+                    joker.on_card_trigger(&mut score, i);
                 }
             }
         };
 
         for card in self.unplayed_cards.iter() {
             let mut triggers = 1;
-            triggers += self.retriggers.hand;
+            triggers += retriggers.hand;
             if card.has_red_seal {
                 triggers += 1;
             }
             for _ in 0..triggers {
                 if card.is_steel {
-                    self.score.mult *= 1.5;
+                    score.mult *= 1.5;
                 }
                 for joker in self.jokers.iter() {
-                    joker.on_unplayed_trigger(&mut self.score, &card);
+                    joker.on_unplayed_trigger(&mut score, &card);
                 }
             }
         }
 
         for joker in self.jokers.iter() {
-            joker.on_trigger(&mut self.score);
+            joker.on_trigger(&mut score);
         };
 
-        self.score.total()
+        score.total()
+    }
+}
+
+impl Display for Simulation {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        let mut output = String::new();
+        output += &format!("Base: {}", self.base_hand);
+        output += &String::from("\nHand:");
+        for card in self.hand.iter() {
+            output += &format!("\n    {}", card);
+        }
+        output += &String::from("\nJokers:");
+        for joker in self.jokers.iter() {
+            output += &format!("\n    {}", joker);
+        }
+        output += &String::from("\nUnplayed:");
+        for card in self.unplayed_cards.iter() {
+            output += &format!("\n    {}", card);
+        }
+        write!(f, "{}", output)
     }
 }

@@ -1,3 +1,4 @@
+use std::fmt::Display;
 use crate::sim::*;
 
 pub enum JokerClass {
@@ -8,6 +9,21 @@ pub enum JokerClass {
     HangingChad,
     Mime,
     Baron,
+}
+
+impl Display for JokerClass {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        let name = match self {
+            Self::Generic(modifiers) => { format!("Generic({})", modifiers) },
+            Self::GenericPerTrigger(modifiers) => { format!("PerTrigger({})", modifiers) },
+            Self::Photograph => { String::from("Photograph") },
+            Self::RetriggerAll => { String::from("RetriggerAll") },
+            Self::HangingChad => { String::from("HangingChad") },
+            Self::Mime => { String::from("Mime") },
+            Self::Baron => { String::from("Baron") },
+        };
+        write!(f, "{}", name)
+    }
 }
 
 pub struct Joker {
@@ -83,5 +99,15 @@ impl Joker {
         };
         modifiers.add(&self.edition.modifiers());
         score.apply(&modifiers);
+    }
+}
+
+impl Display for Joker {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        let mut name = format!("{}", self.class);
+        if self.edition != Edition::None {
+            name += &format!(" | {}", self.edition.to_string());
+        }
+        write!(f, "{}", name)
     }
 }

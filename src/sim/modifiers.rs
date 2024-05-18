@@ -1,3 +1,5 @@
+use std::fmt::{format, Display};
+use strum::Display;
 use crate::sim::*;
 
 #[derive(Clone, Copy)]
@@ -14,6 +16,23 @@ impl Default for Modifiers {
             mult: 0,
             x_mult: 1.0,
         }
+    }
+}
+
+impl Display for Modifiers {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        let mut parts: Vec<String> = Vec::new();
+        if (self.chips != 0) {
+            parts.push(format!("chips +{}", self.chips));
+        }
+        if (self.mult != 0) {
+            parts.push(format!("mult +{}", self.mult));
+        }
+        if (self.x_mult != 1.0) {
+            parts.push(format!("mult x{}", self.x_mult));
+        }
+        let name = if parts.len() == 0 { String::from("no modifiers") } else { parts.join(", ") };
+        write!(f, "{}", name)
     }
 }
 
@@ -54,8 +73,9 @@ impl Modifiers {
     }
 }
 
-#[derive(Clone, Copy, PartialEq, Eq)]
+#[derive(Clone, Copy, PartialEq, Eq, Display)]
 pub enum Enhancement {
+    #[strum(serialize = "Standard")]
     None,
     Bonus,
     Mult,
@@ -73,11 +93,14 @@ impl Enhancement {
     }
 }
 
-#[derive(Clone, Copy, PartialEq, Eq)]
+#[derive(Clone, Copy, PartialEq, Eq, Display)]
 pub enum Edition {
+    #[strum(serialize = "Standard")]
     None,
     Foil,
+    #[strum(serialize = "Holographic")]
     Holo,
+    #[strum(serialize = "Polychrome")]
     Poly,
 }
 
@@ -92,8 +115,10 @@ impl Edition {
     }
 }
 
-#[derive(Clone, Copy, PartialEq, Eq)]
+#[derive(Clone, Copy, PartialEq, Eq, Display)]
 pub enum Seal {
+    #[strum(serialize = "No Seal")]
     None,
+    #[strum(serialize = "Red Seal")]
     Red,
 }
